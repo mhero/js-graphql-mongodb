@@ -104,7 +104,7 @@ describe("Tests for user", function () {
   });
 
   describe("delete", function () {
-    it("creates a user with a user object response", async function () {
+    it("deletes a user correctly", async function () {
       const user = {
         firstName: faker.name.findName(),
         lastName: faker.name.lastName(),
