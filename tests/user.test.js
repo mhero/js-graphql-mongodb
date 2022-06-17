@@ -112,9 +112,21 @@ describe("Tests for user", function () {
       };
       const userCreated = await userRepository.createUser({ user });
       const result = await userRepository.deleteUser({ id: userCreated._id });
-      expect(result).toEqual(true);
+      expect(result).toMatchObject(user);
       const findUser = await userRepository.getUser({ id: userCreated._id });
       expect(findUser).toBeNull();
+    });
+
+    it("executes delete a user twice correctly", async function () {
+      const user = {
+        firstName: faker.name.findName(),
+        lastName: faker.name.lastName(),
+        note: faker.lorem.lines(),
+      };
+      const userCreated = await userRepository.createUser({ user });
+      let result = await userRepository.deleteUser({ id: userCreated._id });
+      result = await userRepository.deleteUser({ id: userCreated._id });
+      expect(result).toBeNull();
     });
   });
 });

@@ -5,10 +5,6 @@ async function getAllUsers() {
   return users;
 }
 
-async function getUser({ id }) {
-  return await User.findById(id);
-}
-
 async function createUser({ user }) {
   const { firstName, lastName, note } = user;
   const newUser = new User({ firstName, lastName, note });
@@ -16,9 +12,12 @@ async function createUser({ user }) {
   return newUser;
 }
 
+async function getUser({ id }) {
+  return await User.findById(id);
+}
+
 async function deleteUser({ id }) {
-  await User.findByIdAndDelete(id);
-  return true;
+  return await User.findByIdAndDelete(id);
 }
 
 async function updateUser({ id, user }) {
