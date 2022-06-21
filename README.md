@@ -1,5 +1,3 @@
-# ol-test
-
 Simple graphql server with apollo-server-express.<br>
 This is connected to a mongodb database( defined in .env).
 
